@@ -46,7 +46,7 @@ async def get_random_joke(
     req: Request,
     http_client: HTTPClientDeps,
 ) -> Joke:
-    print(req.headers)
+    raise Exception(req.headers)
     headers = {
         "Accept": "application/json",
         "User-Agent": "My FastAPI app (https://myapp.com/contact)",
@@ -68,5 +68,4 @@ async def search_jokes(
     }
     resp = await http_client.get(url, headers=headers)
     data = resp.json()
-    print(data)
     return [Joke(text=joke["joke"]) for joke in data["results"]]

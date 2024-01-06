@@ -5,11 +5,6 @@
       "use": "@vercel/python"
     }
   ],
-  "functions": {
-    "api/index.py": {
-      "includeFiles": "lib/**"
-    }
-  },
   "routes": [
     {
       "src": "/(.*)",

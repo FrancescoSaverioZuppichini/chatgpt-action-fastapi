@@ -1,7 +1,9 @@
 from fastapi import FastAPI, Request
+from pydantic import BaseModel, Field
 
-from .schemas import Joke
 
+class Joke(BaseModel):
+    text: str = Field(description="The joke's text")
 
 app = FastAPI()
 

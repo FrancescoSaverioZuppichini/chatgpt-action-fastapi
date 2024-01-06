@@ -36,3 +36,19 @@ HTTPClientDeps = Annotated[httpx.AsyncClient, Depends(get_http_client)]
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
+
+class Joke(BaseModel):
+    text: str = Field(description="The joke's text")
+
+
+@app.get("/api/jokes/random", description="Returns a random joke")
+async def handler_gpt(
+    http_client: HTTPClientDeps,
+) -> Joke:
+    headers = {
+        "Accept": "application/json",
+        "User-Agent": "My FastAPI app (https://myapp.com/contact)",
+    }
+    resp = await http_client.get(API_URL, headers=headers)
+    data = resp.json()
+    return Joke(text=data["joke"])

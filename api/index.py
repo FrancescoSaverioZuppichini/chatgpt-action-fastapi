@@ -33,7 +33,7 @@ client = httpx.AsyncClient()
 
 HTTPClientDeps = Annotated[httpx.AsyncClient, Depends(get_http_client)]
 
-@app.get("/")
+@app.get("/ping")
 async def handler():
     return {"result": "Hello 👋!"}
 

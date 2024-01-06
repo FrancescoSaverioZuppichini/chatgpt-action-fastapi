@@ -6,6 +6,7 @@ from lib.schemas import Joke
 app = FastAPI()
 
 
+
 @app.get("/")
 async def handler():
     return {"hello": "there!"}

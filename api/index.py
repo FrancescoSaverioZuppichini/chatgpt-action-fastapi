@@ -38,6 +38,3 @@ async def handler():
     return {"result": "Hello 👋!"}
 
 
-class Joke(BaseModel):
-    text: str = Field(description="The joke's text")
-

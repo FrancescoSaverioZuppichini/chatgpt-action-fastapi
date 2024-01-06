@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request
 
-from api.schemas import Joke
+from lib.schemas import Joke
 
 
 app = FastAPI()

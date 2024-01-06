@@ -33,6 +33,11 @@ client = httpx.AsyncClient()
 
 HTTPClientDeps = Annotated[httpx.AsyncClient, Depends(get_http_client)]
 
-@app.get("/api")
-async def root():
-    return {"message": "Hello World"}
+@app.get("/")
+async def handler():
+    return {"result": "Hello 👋!"}
+
+
+class Joke(BaseModel):
+    text: str = Field(description="The joke's text")
+

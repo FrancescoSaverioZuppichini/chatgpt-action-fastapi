@@ -6,7 +6,7 @@ API_URL = "https://icanhazdadjoke.com/"
 
 app = FastAPI()
 
-@app.get("/")
+@app.get("/api")
 async def handler():
     return {"result": "Hello 👋!"}
 

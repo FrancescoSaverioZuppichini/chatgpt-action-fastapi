@@ -42,7 +42,7 @@ class Joke(BaseModel):
 
 
 @app.get("/api/jokes/random", description="Returns a random joke")
-async def handler_gpt(
+async def get_random_joke(
     http_client: HTTPClientDeps,
 ) -> Joke:
     headers = {
@@ -52,3 +52,19 @@ async def handler_gpt(
     resp = await http_client.get(API_URL, headers=headers)
     data = resp.json()
     return Joke(text=data["joke"])
+
+@app.get("/api/jokes/search")
+async def search_jokes(
+    http_client: HTTPClientDeps,
+    term: str,
+    page: int = 0,
+) -> List[Joke]:
+    url = f"{API_URL}/search?term={term}&page={page}&limit={20}"
+    headers = {
+        "Accept": "application/json",
+        "User-Agent": "My FastAPI app (https://myapp.com/contact)",
+    }
+    resp = await http_client.get(url, headers=headers)
+    data = resp.json()
+    print(data)
+    return [Joke(text=joke["joke"]) for joke in data["results"]]

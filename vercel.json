@@ -1,21 +1,19 @@
 {
-    "builds": [
-      {
-        "src": "api/index.py",
-        "use": "@vercel/python"
-      }
-    ],
-    "functions": {
-        "api/index.py": {
-          "includeFiles": [
-            "lib/**"
-          ]
-        }
-      },
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "api/index.py"
-      }
-    ]
-  }
+  "builds": [
+    {
+      "src": "api/index.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "functions": {
+    "api/index.py": {
+      "includeFiles": "lib/**"
+    }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "api/index.py"
+    }
+  ]
+}

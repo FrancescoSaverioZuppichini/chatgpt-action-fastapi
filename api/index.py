@@ -43,10 +43,8 @@ class Joke(BaseModel):
 
 @app.get("/api/jokes/random", description="Returns a random joke")
 async def get_random_joke(
-    req: Request,
     http_client: HTTPClientDeps,
 ) -> Joke:
-    raise Exception(req.headers)
     headers = {
         "Accept": "application/json",
         "User-Agent": "My FastAPI app (https://myapp.com/contact)",

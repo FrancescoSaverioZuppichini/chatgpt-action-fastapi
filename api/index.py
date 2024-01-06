@@ -61,7 +61,7 @@ async def search_jokes(
     http_client: HTTPClientDeps,
     term: str,
     page: int = 0,
-) -> List[Joke]:
+) -> list[Joke]:
     url = f"{API_URL}/search?term={term}&page={page}&limit={20}"
     headers = {
         "Accept": "application/json",

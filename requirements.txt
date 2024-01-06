@@ -1,3 +1,2 @@
 fastapi
 uvicorn[standard]
-pydantic==1.10.11

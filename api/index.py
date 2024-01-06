@@ -37,15 +37,16 @@ HTTPClientDeps = Annotated[httpx.AsyncClient, Depends(get_http_client)]
 async def root():
     return {"message": "Hello World"}
 
-
 class Joke(BaseModel):
     text: str = Field(description="The joke's text")
 
 
 @app.get("/api/jokes/random", description="Returns a random joke")
 async def get_random_joke(
+    req: Request,
     http_client: HTTPClientDeps,
 ) -> Joke:
+    raise Exception(req.headers)
     headers = {
         "Accept": "application/json",
         "User-Agent": "My FastAPI app (https://myapp.com/contact)",
@@ -53,7 +54,6 @@ async def get_random_joke(
     resp = await http_client.get(API_URL, headers=headers)
     data = resp.json()
     return Joke(text=data["joke"])
-
 
 @app.get("/api/jokes/search", description="Search for jokes given a 'term'")
 async def search_jokes(

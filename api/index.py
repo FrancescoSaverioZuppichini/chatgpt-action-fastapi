@@ -14,16 +14,16 @@ class Joke(BaseModel):
 async def handler():
     return {"result": "Hello 👋!"}
 
-@app.get("/api/jokes/random", description="Returns a random joke")
-async def handler_gpt() -> Joke:
-    headers = {
-        "Accept": "application/json",
-        "User-Agent": "My FastAPI app (https://myapp.com/contact)",
-    }
-    async with httpx.AsyncClient() as client:
-        resp = await client.get(API_URL, headers=headers)
-    data = resp.json()
-    return Joke(text=data["joke"])
+# @app.get("/api/jokes/random", description="Returns a random joke")
+# async def handler_gpt() -> Joke:
+#     headers = {
+#         "Accept": "application/json",
+#         "User-Agent": "My FastAPI app (https://myapp.com/contact)",
+#     }
+#     async with httpx.AsyncClient() as client:
+#         resp = await client.get(API_URL, headers=headers)
+#     data = resp.json()
+#     return Joke(text=data["joke"])
 
 # @app.get("/api/jokes/search")
 # async def search_jokes(

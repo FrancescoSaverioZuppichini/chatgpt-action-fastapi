@@ -1,10 +1,11 @@
 from fastapi import FastAPI, Request
 from pydantic import BaseModel, Field
 
+from lib.schemas import Joke
+
+
 app = FastAPI()
 
-class Joke(BaseModel):
-    text: str = Field(description="The joke's text")
 
 @app.post("/api/gpt", description="Returns a random joke", response_model=Joke)
 async def root(req: Request):

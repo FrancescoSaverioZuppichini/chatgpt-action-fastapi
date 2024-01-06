@@ -53,7 +53,7 @@ async def get_random_joke(
     data = resp.json()
     return Joke(text=data["joke"])
 
-@app.get("/api/jokes/search")
+@app.get("/api/jokes/search", description="Search for jokes given a 'term'")
 async def search_jokes(
     http_client: HTTPClientDeps,
     term: str,

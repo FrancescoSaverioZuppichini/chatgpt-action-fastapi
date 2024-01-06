@@ -25,17 +25,17 @@ async def handler_gpt() -> Joke:
     data = resp.json()
     return Joke(text=data["joke"])
 
-@app.get("/api/jokes/search")
-async def search_jokes(
-    term: str,
-    page: int = 0,
-) -> list[Joke]:
-    url = f"{API_URL}/search?term={term}&page={page}&limit={20}"
-    headers = {
-        "Accept": "application/json",
-        "User-Agent": "My FastAPI app (https://myapp.com/contact)",
-    }
-    async with httpx.AsyncClient() as client:
-        resp = await client.get(url, headers=headers)
-    data = resp.json()
-    return [Joke(text=joke["joke"]) for joke in data["results"]]
+# @app.get("/api/jokes/search")
+# async def search_jokes(
+#     term: str,
+#     page: int = 0,
+# ) -> list[Joke]:
+#     url = f"{API_URL}/search?term={term}&page={page}&limit={20}"
+#     headers = {
+#         "Accept": "application/json",
+#         "User-Agent": "My FastAPI app (https://myapp.com/contact)",
+#     }
+#     async with httpx.AsyncClient() as client:
+#         resp = await client.get(url, headers=headers)
+#     data = resp.json()
+#     return [Joke(text=joke["joke"]) for joke in data["results"]]
